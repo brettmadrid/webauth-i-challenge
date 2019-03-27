@@ -1,6 +1,6 @@
 1. yarn
 2. npm init -y - add "server": "nodemon index.js" to startup scripts in package.json file
-3. add dependencies express, knex, sqlite3
+3. add dependencies express, knex, sqlite3, and nodemon -d
 4. yarn add nodemon -d
 5. create /data directory for database
 6. knex init to create knexfile.js - set up file to work with sqlite3 and database, set migrations/seeds path
