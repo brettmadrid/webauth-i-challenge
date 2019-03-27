@@ -28,6 +28,7 @@ server.post('/api/register', (req, res) => {
   // now replace the user's text password with the hashed version
   user.password = hash;
 
+  // using the users-model.js helper file, add new user to the database
   Users.add(user)
   .then(saved => {
     res.status(201).json(saved)
@@ -36,5 +37,30 @@ server.post('/api/register', (req, res) => {
     res.status(500).json(error)
   })
 })
+
+server.post('/api/login', (req, res) => {
+  const { username, password } = req.body;
+
+  Users.findBy({ username })
+  .first()
+  .then(user => {
+    if (user && bcrypt.compareSync(password, user.password)) {
+      res.status(200).json({ message: `Welcome ${user.username}!` });
+    } else {
+      res.status(401).json({ message: "You shall not pass!"});
+    }
+  })
+  .catch(error => {
+    res.status(500).json(error);
+  })
+});
+
+server.get('/api/users', (req, res) => {
+  Users.find()
+    .then(users => {
+      res.json(users);
+    })
+    .catch(err => res.send(err));
+});
 
 module.exports = server;
