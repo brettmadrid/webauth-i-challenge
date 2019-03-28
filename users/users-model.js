@@ -26,5 +26,5 @@ async function add(user) {
 }
 
 function findById(id) {
-  return findBy(id);
+  return findBy(id).first();
 }
