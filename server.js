@@ -80,7 +80,7 @@ server.post("/api/login", (req, res) => {
 server.get("/api/users", restricted, (req, res) => {
   Users.find()
     .then(users => {
-      res.json(users);
+      res.status(200).json(users);
     })
     .catch(err => res.send(err));
 });
