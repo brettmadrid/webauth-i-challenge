@@ -1,0 +1,19 @@
+.App {
+  background-color: slateblue;
+}
+
+.paper {
+  margin: 3%;
+  width: 30%;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.card {
+  margin: 3%;
+  width: 180px;
+}
